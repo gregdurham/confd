@@ -130,6 +130,7 @@ func (t *TemplateResource) createStageFile() error {
 	tplFuncMap["jsonArray"] = t.UnmarshalJsonArray
 	tplFuncMap["sibling"] = t.GetSibling
 	tplFuncMap["parent"] = path.Dir
+	tplFuncMap["last"] = last
 
 	tmpl := template.Must(template.New(path.Base(t.Src)).Funcs(tplFuncMap).ParseFiles(t.Src))
 	if err = tmpl.Execute(temp, nil); err != nil {
